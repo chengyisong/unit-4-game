@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="assets/css/reset.css">
+    <title>Pokemon Game</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/images/psyduck.png" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+</head>
+
+<body>
+    <div class = "container">
+        <header>Pokemon Game</header>
+<div id="characterArea" class="placeholder"> </div>
+
+<div id="playerArea" class="placeholder-one"> </div>
+ 
+<div id="allEnemyArea" class="placeholder-three">  </div>
+ 
+<div id="currentEnemyArea" class="placeholder-one"> </div>
+
+</body>
+
+<script>
+    var char1 = {
+        name: "Pikachu",
+        img: "assets/images/pikachu.png",
+    }
+
+    var char2 = {
+        name: "Charizard",
+        img: "assets/images/charizard.png",
+    }
+
+    function charPop (x, location, newclass) {
+        var charSpan = $("<div>");  
+        charSpan.addClass("charDivStyle");
+        $(location).append(charSpan);
+        var charImg = $("<img>");
+        charImg.addClass("imgStyle");
+        charImg.attr("src",eval("char" + x).img)
+        charSpan.append(charImg);
+        charImg.addClass(newclass);
+    }
+
+
+    for (var i = 1; i < 3; i++) {
+        charPop (i, "#characterArea", "allChar");
+    }
+
+
+    $(".allChar").on("click", function() {
+        var numChosen = $(this).attr("data-pokemonNum");
+        var charClicked = eval("char" + numChosen);
+        charPop (numChosen, "#playerArea", "pokemonChosen");
+        $("#characterArea").empty();        
+        charClicked.isChosen = true;
+        for (var i = 1; i < 3; i++) {
+            var pokemon = eval("char" + i);
+            if (pokemon.isChosen === false) {
+               charPop (i, "#allEnemyArea", "enemyChar");
+            }
+        }
+    })
+
+    
+    $(".enemyChar").on("click", function() {
+        console.log("testttttt");
+        var numChosen = $(this).attr("data-pokemonNum");
+        var charClicked = eval("char" + numChosen);
+        charPop (numChosen, "#currentEnemyArea", "enemyChosen");
+        
+    })
+
+</script>
+
+</html>

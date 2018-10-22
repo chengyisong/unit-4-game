@@ -1,0 +1,107 @@
+body {
+    background-image: url("../images/background.jpg");
+}
+
+.placeholder {
+    height: 110px;
+    width: 290px;
+    border-style: solid;
+    border-color: blue;
+    border-width: 5px;
+}
+
+.placeholder-one {
+    height: 110px;
+    width: 80px;
+    border-style: solid;
+    border-color: blue;
+    border-width: 5px;
+}
+
+.placeholder-three {
+    height: 110px;
+    width: 220px;
+    border-style: solid;
+    border-color: blue;
+    border-width: 5px;
+}
+
+
+.instruction {
+    font-size: 10px;
+}
+
+header {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.imgStyle {
+    width: 70px;
+    height: 60px;
+}
+
+.charDivStyle {
+    width: 70px;
+    height: 100px;
+    border-style: dotted;
+    border-color: gray;
+    border-width: 1px;
+    float: left;
+}
+
+.charNameStyle {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size:10px;
+}
+
+.allChar {
+    background-color: white;
+}
+
+.pokemonChosen {
+    background-color: green;
+}
+
+.enemyChar {
+    background-color: black;
+    z-index: 10;
+}
+
+.defeatedChar {
+    background-color: darkgray;
+    position: static;
+    z-index: 3;
+}
+
+.defeatedSign {
+    background-color: rgb(39, 39, 39);
+    font-style: italic;
+    color: white;
+    font-size: 10px;
+    width: 70px;
+    padding: 5px 0px;
+    text-align: center;
+    position: relative;
+    left: 5px;
+    z-index: 5;
+    bottom: 70px;
+}
+
+#defSign2 {
+    position: relative;
+    left: 75px;
+    bottom: 94.6px;
+}
+
+#defSign3 {
+    position: relative;
+    left: 145px;
+    bottom: 119.3px;
+}
+
+.currentEnemyChar {
+    background-color: red;
+}
