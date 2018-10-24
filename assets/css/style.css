@@ -36,6 +36,7 @@ body {
 
 .container {
     background-color: rgba(255, 249, 226, 0.767);
+    padding-bottom: 40px;
 }
 
 
@@ -133,6 +134,6 @@ hr {
 }
 
 button {
-    margin-top: 190px;
+    margin-top: 220px;
     margin-bottom: 15px;
 }
