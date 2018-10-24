@@ -7,53 +7,59 @@
     <title>Pokemon Game</title>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Chango|Kaushan+Script|Rancho" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="assets/images/psyduck.png" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <!-- <script type="text/javascript" src="assets/javascript/game.js"></script> -->
 </head>
 
 <body>
     <div class = "container">
         <header>Pokemon Game</header>
         <div class = "row">
-            <div class = "col-md-6">
-                <h1 class="instruction">1) Please choose one pokemon as yours. </h1>
-                <h1 class="instruction">You should be able to win and lose the game no matter what character you choose. Your choice of oppennets matters.</h1>
-                    <div id="characterArea" class="placeholder">
-                    </div>
-
-                <br>
-
-                <h1 class="instruction">Your Pokemon: </h1>
-                    <div id="playerArea" class="placeholder-one"></div>
-
-                <br>
+            <div class = "col-md-12">
+                <li class="instruction">Choose your pokemon and beat the rest! </li>
+                <li class="instruction"><strong>HP: </strong>Your health point. You will lose once your HP is 0 or less. </li>
+                <li class="instruction"><strong>AP: </strong> Your attack power. Everytime you attack, your attack power will <strong>increase by</strong> your base AP (the AP that you start with.) However, enemy's AP stays the same.</li>
+                <li class="instruction">When you win a battle, your AP remains and keeps increasing in the next battle.</li>
+                <hr>
             </div>
 
-            <div class = "col-md-6">
-                <h1 class="instruction">2) These are the pokemons that you need to defeat! </h1>
-                <h1 class="instruction">Please select the pokemon that you want to fight. After you defeat all of them, you will win the game!</h1>
-                <div id="allEnemyArea" class="placeholder-three"></div>
-                <div>
-                    <div class = "defeatedSign" id="defSign1"> Defeated</div>
-                    <div class = "defeatedSign" id="defSign2"> Defeated</div>
-                    <div class = "defeatedSign" id="defSign3"> Defeated</div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-md-4">
+                <h1 class="instruction instWhiteBack">1) Please choose one pokemon as yours. You should be able to win the game no matter what character you choose. The key is the sequence of opponents. </h1>
+                <div id="characterArea" class="placeholder"></div>
+                <h1 class="instruction"><strong>Your Pokemon: </strong></h1>
+                <div id="playerArea" class="placeholder-one"></div>
+
                 </div>
 
-                <br>
-                <h1 class="instruction">Your Current Opponent:</h1>
+            <div class = "col-md-4">
+                <h1 class="instruction instWhiteBack">2) These are the pokemons that you need to defeat! Please select the pokemon that you want to fight. After you defeat all of them, you will win the game!</h1>
+               
+                <div id="allEnemyArea" class="placeholder-three"></div>
+
+                <h1 class="instruction"><strong>Your Current Opponent:</strong></h1>
                 <div id="currentEnemyArea" class="placeholder-one"></div>
 
+            </div>
+
+            <div class = "col-md-4">
+                <br class="blank">
+                <button id="attackBtn" type="button" class="btn btn-lg btn-danger" disabled>Attack</button>
+                <button id="resetBtn" type="button" class="btn btn-lg btn-info">Reset</button>
+                <div id="stats1" class="instruction">Please select your Pokemon and your opponent Pokemon to begin the battle!</div>
+                <div id="stats2" class="instruction"></div>
             </div>
         </div>
 
         <div class="row">
             <div class = "col-md-12">
-                <button id="attackBtn" type="button" class="btn btn-lg btn-danger" disabled>Attack</button>
-                <button id="resetBtn" type="button" class="btn btn-lg btn-info">Reset</button>
-                <div id="stats1">Please select your Pokemon and your opponent Pokemon to begin the battle!</div>
-                <div id="stats2"></div>
+                <br>
+                
             </div>
         </div>
 
@@ -76,45 +82,49 @@
         char1 = {
             name: "Pikachu",
             img: "assets/images/pikachu.png",
-            HP: 100,
+            HP: 100 + Math.floor(100*Math.random()),
             attackPower: 8,
             currentAttackPow: 8, 
             isChosen: false,
             isChosenEnemy: false,
             isDefeated: false,
+            HPisShown: false,
             }
             
-            char2 = {
-                name: "Charizard",
-                img: "assets/images/charizard.png",
-                HP: 150,
-                attackPower: 20,
-                currentAttackPow: 20, 
-                isChosen: false,
-                isChosenEnemy: false,
-                isDefeated: false,
-            }
+        char2 = {
+            name: "Charizard",
+            img: "assets/images/charizard.png",
+            HP: 150 + Math.floor(100*Math.random()),
+            attackPower: 20,
+            currentAttackPow: 20, 
+            isChosen: false,
+            isChosenEnemy: false,
+            isDefeated: false,
+            HPisShown: false,
+        }
 
         char3 = {
             name: "Clefairy",
             img: "assets/images/clefairy.png",
-            HP: 120,
+            HP: 120 + Math.floor(100*Math.random()),
             attackPower: 7,
             currentAttackPow: 7, 
             isChosen: false,
             isChosenEnemy: false,
             isDefeated: false,
+            HPisShown: false,
         }
 
         char4 = {
             name: "Gengar",
             img: "assets/images/gengar.png",
-            HP: 80,
+            HP: 80 + Math.floor(100*Math.random()),
             attackPower: 5,
             currentAttackPow: 5, 
             isChosen: false,
             isChosenEnemy: false,
             isDefeated: false,
+            HPisShown: false,
         }
 
         // Emptying all fields
@@ -135,11 +145,13 @@
     }
 
     // Setting up the function to populate certian pokemon (number x) in certain area (loaction), with a "newClass" lable. 
-    function charPop (x, location, newClass, HPClass) {
+    function charPop (x, location, newClass, HPClass, attackClass) {
         var charSpan = $("<div>");
         var charName = $("<div>");
         var HPSpan = $("<span>"); 
         var charImg = $("<img>");
+        var defeatedLabel = $("<div>");
+        var attackSpan = $("<span>");
 
         // Show Pokemon Name   
         charName.text(eval("char" + x).name);
@@ -151,10 +163,28 @@
         charName.addClass("charNameStyle");        
         charImg.addClass("imgStyle"); 
         charSpan.addClass("charDivStyle");
+        
+        if (eval("char" + x).isDefeated === true) {
+            defeatedLabel.addClass("defeatedSignShow");
+        }
+        else defeatedLabel.addClass("defeatedSign");
+
+        // Defeated label text
+        defeatedLabel.text("DEFEATED");
+        defeatedLabel.addClass(x + "defeated");
 
         // Add HPClass labels the HP amount that can be changed later (mainly used for player Pokemon HP and current Pokemon HP). Showing HP amount as the pokemon object's original HP
         HPSpan.addClass(HPClass);
-        HPSpan.text(eval("char" + x).HP)
+        if (eval("char" + x).HPisShown === false) {
+            HPSpan.text("???");
+        }
+        else HPSpan.text(eval("char" + x).HP);
+
+        attackSpan.addClass(attackClass);
+        if (eval("char" + x).HPisShown === false) {
+            attackSpan.text("???");
+        }
+        else attackSpan.text(eval("char" + x).currentAttackPow);
 
         // Appending name, image, HP to the designated area in html..
         charSpan.append(charName);
@@ -162,6 +192,10 @@
         charSpan.append(charImg);
         charSpan.append("HP: ");
         charSpan.append(HPSpan);
+        charSpan.append("<br>");
+        charSpan.append("AP: ");
+        charSpan.append(attackSpan);
+        charSpan.append(defeatedLabel);
         
         // Labelling the Pokemon card area as newClass, giving it a # attribute that matches the pokemon object #
         charSpan.attr("data-pokemonNum",x);        
@@ -181,16 +215,19 @@
         var charClicked = eval("char" + numChosen);
 
         // Populate the chosen player Pokemon in the playerArea
-        charPop (numChosen, "#playerArea", "pokemonChosen", "playerHPText");
+        charClicked.HPisShown = true;
+        charPop (numChosen, "#playerArea", "pokemonChosen", "playerHPText", "playerAttackText");
         // Clear the all character area..
         $("#characterArea").empty();
 
         // charClicked is chosen. 
         charClicked.isChosen = true;
+        
 
         // run a for loop, and for any unchosen pokemon, populate them in the all enemy area. Labelling them as "enemyChar"
         for (var i = 1; i < 5; i++) {
             var pokemon = eval("char" + i);
+            pokemon.HPisShown = true;
             if (pokemon.isChosen === false) {
                charPop (i, "#allEnemyArea", "enemyChar");
             }
@@ -216,7 +253,7 @@
 
         // Populate the chosen enemy Pokemon in the currentEnemyArea (first clearing any existing a.k.a previously defeated enemy)
         $("#currentEnemyArea").empty()
-        charPop (numChosen, "#currentEnemyArea", "currentEnemyChar", "currentEnemyHPText");
+        charPop (numChosen, "#currentEnemyArea", "currentEnemyChar", "currentEnemyHPText", "currentEnemyAttackText");
 
         // Clear the all enemy Area, and run a for loop again to populate all Pokemon that is NEITHER chosen as Player Pokemon NOR chosen as the current Enemy
         $("#allEnemyArea").empty()
@@ -227,6 +264,7 @@
             }
             if (pokemon.isDefeated === true) {
                 charPop (i, "#allEnemyArea", "defeatedChar");
+        
             }
         }    
 
@@ -244,6 +282,7 @@
         $("#stats1").text("Your " + pokemonPlayer.name + " attacked " + pokemonEnemy.name + " for " + pokemonPlayer.currentAttackPow + " damages!");
         pokemonEnemy.HP -= pokemonPlayer.currentAttackPow;
         $(".currentEnemyHPText").text(pokemonEnemy.HP);
+        $(".playerAttackText").text(pokemonPlayer.currentAttackPow);
 
         // When current enemy HP is <= 0..
         if (pokemonEnemy.HP <= 0) {
@@ -252,13 +291,19 @@
 
             // Check to see if ALL pokemons have been defeated. If so, player has won
             if ((char1.isDefeated === true || char1.isChosen === true) && (char2.isDefeated === true || char2.isChosen === true) && (char3.isDefeated === true || char3.isChosen === true) && (char4.isDefeated === true || char4.isChosen === true)) {
-                $("#stats1").text("Your " + pokemonPlayer.name + " have won!");
-                $("#stats2").text("Please refresh to play another game!");
+                $("#stats1").text("Your " + pokemonPlayer.name + " has won!");
+                $("#stats2").text("");
+                setTimeout(function() {
+                    var playAnother = confirm("Congratulations, you have won... (◕‿◕✿)  Play again!");
+                    if (playAnother === true || playAnother === false) {
+                        reset();
+                    } 
+                },10);
             }
             
             // If there are still undefeated enemy(s).. Ask the player to choose another enemy
             else {                
-                $("#stats1").text("Your " + pokemonPlayer.name + " have defeated " + pokemonEnemy.name + " !");
+                $("#stats1").text("Your " + pokemonPlayer.name + " has defeated " + pokemonEnemy.name + " !");
                 $("#stats2").text("Please select another pokemon opponent to keep battling!");
             }
         } 
@@ -272,14 +317,19 @@
             // Check to see if Player Pokemon HP <= 0. Is so, game over
             if (pokemonPlayer.HP <= 0) {
                 $("#stats1").text("Your " + pokemonPlayer.name + " have lost!");
-                $("#stats2").text("Please reset to try again!");
-                $("#attackBtn").attr("disabled","disabled");
+                setTimeout(function() {
+                    var playAnother = confirm("Sorry, you have lost... ಠ_ಠ   Please try again!");
+                    if (playAnother === true || playAnother === false) {
+                        reset();
+                    } 
+                },10);
             } 
         }
 
         console.log(char1, char2, char3, char4);
 
         pokemonPlayer.currentAttackPow += pokemonPlayer.attackPower;
+        
     
     })
 
